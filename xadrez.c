@@ -4,55 +4,62 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
+//implementando funções recurssivas pra realizar o loop de cada peça
+void moverTorre(int casas){
+    if(casas > 0) {
+    moverTorre(casas - 1);
+    printf("Torre andou para:\n");
+    printf("Direita\n");
+    }
+}
+
+void moverBispo(int casas){
+    if(casas > 0) {
+    moverBispo(casas - 1);
+    printf("Bispo andou para:\n");
+    printf("Cima, Direita\n"); 
+    }
+}
+
+void moverRainha(int casas){
+    if(casas > 0) {
+    moverRainha(casas - 1);
+    printf("Rainha andou para:\n");
+    printf("Esquerda\n");
+    }
+}
+
 int main() {
     // Nível Novato - Movimentação das Peças
-    int torreMovimento = 1, bispoMovimento = 1, rainhaMovimento = 1, cavaloMovimento;
+    //Chamando cada função com seus parametros
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+    moverTorre(5);
     
-    //Loop de repetição da movimentação do bispo, 5 casas na diagonal usando estrutura while
-    while (bispoMovimento <= 5) {
-        printf("Bispo andou %d casa(s) para:\n", bispoMovimento);
-        printf("Cima, Direita\n");
-        bispoMovimento++;
-    }
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    //Loop de repetição da movimentação da torre, de 5 movimentos para Direita usando estrutura for
-    for (torreMovimento; torreMovimento <= 5; torreMovimento++) {
-        printf("Torre andou %d casa(s) para:\n", torreMovimento);
-        printf("Direita\n");
-    }
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    //Loop de repetição da movimentação da rainha, 5 casas para Esquerda usando estrutura do-while
-    do {
-        printf("Rainha andou %d casa(s) para:\n", rainhaMovimento);
-        printf("Esquerda\n");
-        rainhaMovimento++;
-    } while (rainhaMovimento <= 8);
+    moverBispo(5);
+    
+    moverRainha(8);
 
     // Nível Aventureiro - Movimentação do Cavalo
     // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
     // Utilização do loop do-While aninhado com o for, para realizar o movimento de casas correspondente
  
-    do {    //cavalo foi inicializado com o valor 1, quando a condição do loop zera, ele termina, nesse caso foi implementando a logica de negação, pro valor ficar falso
+    //Refatorado para diminuir o custo de processamento em um unico loop com condicional 
 
-        for (int i = 1; i <= 2; i++)   //estrutura de repetição com for para andar pra cima ou baixo
+    for (int i = 2, j = 1; i > 0 || j > 0;)  //Enquanto qualquer um dos dois valores for maior q zero, o loop continua
+    {   
+    if (i > 0)
         {
-            printf("Cavalo andou %d casa(s) para:\n", i);
-            printf("Baixo\n");
+        printf("Cavalo andou para:\n");
+        printf("Baixo\n");
+        i--;
         }
-
-        printf("Cavalo andou 1 casa(s) para:\n");  //finalização do do-while pra terminar o movimento da peça
+    else if (j > 0)
+        {
+        printf("Cavalo andou para:\n");
         printf("Esquerda\n");
-        
-    } while (!cavaloMovimento);
+        j--;
+        }
+    }
 
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
