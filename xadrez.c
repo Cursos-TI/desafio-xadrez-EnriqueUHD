@@ -45,13 +45,12 @@ int main() {
  
     //Refatorado para diminuir o custo de processamento em um unico loop com condicional 
 
-    for (int i = 2, j = 1; i > 0 || j > 0;)  //Enquanto qualquer um dos dois valores for maior q zero, o loop continua
+    for (int i = 2, j = 1; i > 0 || j > 0; i--)  //Enquanto qualquer um dos dois valores for maior q zero, o loop continua
     {   
     if (i > 0)
         {
         printf("Cavalo andou para:\n");
         printf("Baixo\n");
-        i--;
         }
     else if (j > 0)
         {
